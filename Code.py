@@ -1,4 +1,4 @@
-#ImprovEYES: deep-learning CNN pipeline to diagnose diabetic retinopathy
+#ImprovEYES: novel deep-learning pipeline to diagnose diabetic retinopathy
 ​
 import numpy as np
 #Assorts data into matrices for mathematical analyzation
@@ -14,7 +14,7 @@ import cv2
 #Computer vision
 import matplotlib.pyplot as plt
 import seaborn as sns
-#Used to plot graphs about model status
+#Both matplotlib & seaborn are used for creating graphs that reflect model accuracy
 sns.set_style('whitegrid')
 import random
 #Random mini-batches for SGD
@@ -24,7 +24,7 @@ import tensorflow as tf
 #Model improvement after peformance gauging
 from tensorflow import keras
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
-#Data augmentation
+#Data augmentation to prevent overfitting
 from tensorflow.keras.applications import EfficientNetB3
 #Base layer of ImprovEYES, convolves with input images
 from tensorflow.keras import Model
