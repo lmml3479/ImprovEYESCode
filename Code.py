@@ -81,13 +81,6 @@ for i in data:
     classpath = os.path.join(Path_data, i)
     imgpaths.extend([os.path.join(classpath, img) for img in os.listdir(classpath)])
     labels.extend([i] * len(os.listdir(classpath)))
-#for i in data:
-#    classpath = os.path.join(Path_data, i)
-#    imglist = os.listdir(classpath)
-#    for img in imglist:
-#        imgpath = os.path.join(classpath, img)
-#        imgpaths.append(imgpath)
-#        labels.append(i)
 Paths = pd.Series(imgpaths, name = 'Paths')
 print(Paths)
 Labels = pd.Series(labels, name = 'Labels')
@@ -102,11 +95,7 @@ Df.head(5)
 train, testval = train_test_split(Df, test_size = 0.2, shuffle = True, random_state = 123)
 valid, test = train_test_split(testval, test_size = 0.5, shuffle = True, random_state = 123)
 #Splitting DF into three subsets: train (80%), validate (10%), test (10%)
-​
-#print("Train shape: ", train.shape)
-#print("Valid shape: ", valid.shape)
-#print("Test shape: ",test.shape)
-​
+
 train.Labels.value_counts()
 #Counting each unique example during training
 ​
@@ -281,19 +270,10 @@ Train_sc = model.evaluate(Train, verbose = 1)
 Valid_sc = model.evaluate(Valid, verbose = 1)
 Test_sc =model.evaluate(Test, verbose = 1)
 #Evaluates the model across each of its datasets
-​
-#Print
-#print('Train Scores : \n    accuracy:', Train_sc[1], '\n      Loss: ', Train_sc[0], '\n________________________')
-#print('Valid Scores : \n    accuracy:', Valid_sc[1], '\n      Loss: ', Valid_sc[0], '\n________________________')
-#print('Test Scores : \n    accuracy:', Test_sc[1], '\n      Loss: ', Test_sc[0], '\n________________________')
-​
+
 predictions = model.predict_generator(Test)
 y_pred = np.argmax(predictions, axis = 1)
 #Extracing predicted values
-​
-#Chack
-#print(predictions)
-#print(y_pred)
 ​
 # Use n. of keys of  Class indices to greate confusion matrix
 Test_cl_ind = Test.class_indices
@@ -307,7 +287,7 @@ cm
 #CMC (Analyzing where the algorithm makes mistakes)
 ​
 plt.figure(figsize =(8, 8))
-plt.imshow(cm, interpolation = 'nearest', cmap = plt.cm.Greens)
+plt.imshow(cm, interpolation = 'nearest', cmap = plt.cm.Oranges)
 plt.title("Confusion Matrix")
 plt.colorbar()
 #Demonstrating performance of a classification model 
@@ -327,4 +307,4 @@ plt.ylabel('Real Values')
 plt.show()
 #Adjusts layout of computer matrix
 ​
-#model.save('effB3 CNN DR.h5')
+model.save('ImprovEYES')
