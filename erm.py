@@ -1,8 +1,20 @@
+#When using the optimal discrimWhen using
+the optimal discriminator for a given class of generators, the original GAN proposed by Goodfellow
+et al. minimizes the Jensen-Shannon divergence between the data distribution and the generator,
+and extensions generalize this to a wider class of divergences (Nowozin et al., 2016; Sonderby et al.,
+2016; Poole et al., 2016).
+
+
 #Unrolled generative adversarial networks: reduce the probability of mode collapse by playing 'k' number of steps for how the generator can be optimized
+#The generator's objective is defined with respect to an unrolled uptimization of the discriminator
+#Training is adjusted between using the optimal discriminator in the generator's objective (ideal approach) and the current value of the discriminator (leads to mode collapse)
+
 #Very similar to long short-term memory (LSTM) recurrent neural networks: because the generator accumulates its parameter change 'k' times
 #Simply put, an unrolled GAN uses the cost function calculated in the last few steps for generator's backprop, and the only the very first step for the discriminator
-
-import os
+We introduce a method to stabilize Generative Adversarial Networks (GANs) by defining the generator objective with respect to an unrolled optimization of the discriminator. 
+This allows training to be adjusted between using the optimal discriminator in the generator's objective
+, which is ideal but infeasible in practice, and using the current value of the discriminator, which is often unstable and leads to poor solutions
+training to be adjusted between using the optimal discriminator in the generator's objective and using the current value of the discriminator
 import argparse
 import numpy as np
 from typing import Tuple
